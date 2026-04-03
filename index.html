@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eu & Você — Nossa história</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+
+  <!-- ÁUDIO DE FUNDO -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/audio/cheiro de mar.mpeg" type="audio/mpeg">
+  </audio>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__logo">
+      <span class="nav__logo-text">A&L</span>
+    </div>
+    <ul class="nav__links">
+      <li><a href="#sobre" class="nav__link">História</a></li>
+      <li><a href="#timeline" class="nav__link">Momentos</a></li>
+      <li><a href="#reserve" class="nav__link">Planos</a></li>
+      <li><a href="#contato" class="nav__link">Contato</a></li>
+    </ul>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- BOTÃO DE CONTROLE DA MÚSICA (fixo na tela) -->
+  <button class="music-toggle" id="musicToggle" aria-label="Controle de música" title="Clique para tocar a música">
+    <!-- Ícone PLAY (música pausada) -->
+    <svg class="music-icon music-icon--play" width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M9 18V6l12-2v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+    <!-- Ícone MUTE (música tocando) -->
+    <svg class="music-icon music-icon--mute" width="18" height="18" viewBox="0 0 24 24" fill="none" style="display:none">
+      <path d="M9 18V6l12-2v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <span class="music-label">♪</span>
+  </button>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#sobre" class="mobile-link">História</a></li>
+      <li><a href="#timeline" class="mobile-link">Momentos</a></li>
+      <li><a href="#reserve" class="mobile-link">Planos</a></li>
+      <li><a href="#contato" class="mobile-link">Contato</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero__bg">
+      <div class="hero__bg-img" style="background-image: url('assets/fotos/hero.jpg')"></div>
+      <div class="hero__overlay"></div>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal-up" style="--delay: 0.1s">
+        <span class="hero__eyebrow-line"></span>
+        Desde 10 de Março de 2025
+        <span class="hero__eyebrow-line"></span>
+      </p>
+      <h1 class="hero__title reveal-up" style="--delay: 0.3s">
+        Tudo começou<br>com <em>você</em>
+      </h1>
+      <p class="hero__sub reveal-up" style="--delay: 0.5s">
+        Um lugar só nosso — onde cada memória vive para sempre.
+      </p>
+      <a href="#sobre" class="btn btn--accent reveal-up" style="--delay: 0.7s">
+        Nossa história
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <!-- TICKER -->
+    <div class="hero__ticker-wrap">
+      <div class="hero__ticker">
+        <span>Amor &nbsp;&nbsp;·&nbsp;&nbsp; Cumplicidade &nbsp;&nbsp;·&nbsp;&nbsp; Eu & Você &nbsp;&nbsp;·&nbsp;&nbsp; Para sempre &nbsp;&nbsp;·&nbsp;&nbsp; Cada instante &nbsp;&nbsp;·&nbsp;&nbsp; Nossa história &nbsp;&nbsp;·&nbsp;&nbsp;</span>
+        <span aria-hidden="true">Amor &nbsp;&nbsp;·&nbsp;&nbsp; Cumplicidade &nbsp;&nbsp;·&nbsp;&nbsp; Eu & Você &nbsp;&nbsp;·&nbsp;&nbsp; Para sempre &nbsp;&nbsp;·&nbsp;&nbsp; Cada instante &nbsp;&nbsp;·&nbsp;&nbsp; Nossa história &nbsp;&nbsp;·&nbsp;&nbsp;</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SOBRE -->
+  <section class="sobre" id="sobre">
+    <div class="sobre__decorator" aria-hidden="true">01</div>
+    <div class="sobre__img-wrap reveal-left">
+      <div class="sobre__img" style="background-image: url('assets/love.jpeg')"></div>
+      <div class="sobre__img-accent"></div>
+    </div>
+    <div class="sobre__texto reveal-right">
+      <p class="section-eyebrow">Quem somos</p>
+      <h2 class="sobre__titulo">Duas almas que se<br><em>reconheceram</em></h2>
+      <p class="sobre__desc">
+        Não foi acidente. Foi o universo fazendo o que sabe fazer de melhor — colocar duas pessoas certas no lugar certo, na hora exata. Cada conversa que tivemos foi um tijolo nessa construção que chamamos de nós.
+      </p>
+      <p class="sobre__desc">
+        Aqui guardamos o que somos: os risos fáceis, os silêncios confortáveis, e tudo o que ainda vamos viver.
+      </p>
+      <div class="sobre__stats">
+        <div class="sobre__stat">
+          <span class="sobre__stat-num">2</span>
+          <span class="sobre__stat-label">Corações</span>
+        </div>
+        <div class="sobre__stat">
+          <span class="sobre__stat-num">∞</span>
+          <span class="sobre__stat-label">memórias</span>
+        </div>
+        <div class="sobre__stat">
+          <span class="sobre__stat-num">1</span>
+          <span class="sobre__stat-label">amor</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section" id="timeline">
+    <div class="timeline-section__header">
+      <span class="section-eyebrow">Linha do tempo</span>
+      <h2 class="timeline-section__title">Os capítulos<br>da nossa <em>história</em></h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline__line"></div>
+
+      <div class="timeline__item timeline__item--left reveal-left">
+        <div class="timeline__card">
+          <div class="timeline__img" style="background-image: url('assets/Pedido de namoro.jpeg')"></div>
+          <div class="timeline__content">
+            <span class="timeline__date">10 Mar, 2025</span>
+            <h3 class="timeline__title">O pedido de Namoro</h3>
+            <p class="timeline__desc">O dia em que tudo mudou. Quando te vi, algo dentro de mim reconheceu: era você.</p>
+            <button class="timeline__heart js-heart" aria-label="Curtir">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="timeline__heart-count">24</span>
+            </button>
+          </div>
+        </div>
+        <div class="timeline__dot"></div>
+      </div>
+
+      <div class="timeline__item timeline__item--right reveal-right">
+        <div class="timeline__dot"></div>
+        <div class="timeline__card">
+          <div class="timeline__img" style="background-image: url('assets/Birthday.jpeg')"></div>
+          <div class="timeline__content">
+            <span class="timeline__date">Março, 2025</span>
+            <h3 class="timeline__title">Aquele dia especial</h3>
+            <p class="timeline__desc">Algumas horas parecem durar a vida inteira. Esse dia foi um desses — eterno do começo ao fim.</p>
+            <button class="timeline__heart js-heart" aria-label="Curtir">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="timeline__heart-count">18</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline__item timeline__item--left reveal-left">
+        <div class="timeline__card">
+          <div class="timeline__img" style="background-image: url('assets/WhatsApp\ Image\ 2026-04-02\ at\ 15.35.31.jpeg')"></div>
+          <div class="timeline__content">
+            <span class="timeline__date">Todos os dias</span>
+            <h3 class="timeline__title">Cada momento contigo</h3>
+            <p class="timeline__desc">Aprendi que o extraordinário mora nos detalhes — na forma como você ri, no jeito que segurava minha mão.</p>
+            <button class="timeline__heart js-heart" aria-label="Curtir">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="timeline__heart-count">31</span>
+            </button>
+          </div>
+        </div>
+        <div class="timeline__dot"></div>
+      </div>
+
+      <div class="timeline__item timeline__item--right reveal-right">
+        <div class="timeline__dot timeline__dot--future"></div>
+        <div class="timeline__card timeline__card--future">
+          <div class="timeline__content">
+            <span class="timeline__date">Em breve...</span>
+            <h3 class="timeline__title">O próximo capítulo</h3>
+            <p class="timeline__desc">Ainda está sendo escrito. E mal posso esperar para viver cada linha com você.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVE -->
+  <section class="reserve" id="reserve">
+    <div class="reserve__bg-text" aria-hidden="true">NÓS</div>
+    <div class="reserve__inner">
+      <div class="reserve__left reveal-up">
+        <span class="section-eyebrow">Próximos planos</span>
+        <h2 class="reserve__titulo">O que vamos<br>viver <em>juntos</em></h2>
+        <p class="reserve__desc">
+          Cada encontro é uma página nova. Escolha o que quiser escrever comigo.
+        </p>
+
+        <!-- VÍDEO — sem muted para tocar com som -->
+        <div class="reserve__flor" id="videoWrap">
+          <video id="loveVideo" loop playsinline preload="metadata">
+            <source src="assets/videos/WhatsApp Video 2026-04-02 at 13.21.23.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo.
+          </video>
+          <!-- Overlay de play para o vídeo -->
+          <div class="video__play-overlay" id="videoPlayOverlay">
+            <button class="video__play-btn" id="videoPlayBtn" aria-label="Reproduzir vídeo">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <div class="reserve__widget reveal-up" style="--delay: 0.15s">
+        <div class="reserve__widget-header">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M5 1v2M11 1v2M2 6h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Escolha um momento
+        </div>
+
+        <div class="reserve__opcoes">
+          <label class="reserve__opcao">
+            <input type="radio" name="plano" value="1" class="reserve__radio">
+            <div class="reserve__opcao-inner">
+              <div class="reserve__opcao-icon">✦</div>
+              <div>
+                <p class="reserve__opcao-nome">Passeio surpresa</p>
+                <p class="reserve__opcao-desc">1 hora · destino secreto</p>
+              </div>
+            </div>
+          </label>
+          <label class="reserve__opcao">
+            <input type="radio" name="plano" value="2" class="reserve__radio">
+            <div class="reserve__opcao-inner">
+              <div class="reserve__opcao-icon">♡</div>
+              <div>
+                <p class="reserve__opcao-nome">Jantar a dois</p>
+                <p class="reserve__opcao-desc">2 horas · luz de vela</p>
+              </div>
+            </div>
+          </label>
+          <label class="reserve__opcao">
+            <input type="radio" name="plano" value="3" class="reserve__radio">
+            <div class="reserve__opcao-inner">
+              <div class="reserve__opcao-icon">◈</div>
+              <div>
+                <p class="reserve__opcao-nome">Dia inteiro juntos</p>
+                <p class="reserve__opcao-desc">Do amanhecer ao pôr do sol</p>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div class="contato__field" style="margin-top: 1.2rem;">
+          <label for="reserveNome">Seu nome</label>
+          <input type="text" id="reserveNome" placeholder="Como posso te chamar?" autocomplete="off">
+        </div>
+
+        <div class="contato__field" style="margin-top: 0.8rem;">
+          <label for="reserveData">Data e hora do encontro</label>
+          <input type="datetime-local" id="reserveData">
+        </div>
+
+        <div class="contato__field" style="margin-top: 0.8rem;">
+          <label for="reserveMensagem">Uma mensagem (opcional)</label>
+          <textarea id="reserveMensagem" rows="3" placeholder="Escreva algo especial..."></textarea>
+        </div>
+
+        <button class="btn btn--accent reserve__btn" id="reserveBtn" style="margin-top: 1.2rem;">
+          Reservar esse momento
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="reserve__powered">feito com amor, para você ✦</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contato" id="contato">
+    <div class="contato__decorator" aria-hidden="true">04</div>
+    <div class="contato__inner">
+      <div class="contato__left reveal-left">
+        <span class="section-eyebrow">Fale comigo</span>
+        <h2 class="contato__titulo">O que você<br>quer me <em>dizer?</em></h2>
+        <p class="contato__desc">
+          Toda palavra sua importa. Manda uma mensagem, um pedido, um quero mais você.
+        </p>
+        <div class="contato__info">
+          <p>luishenry286@gmail.com</p>
+          <p>(11) 98855-9276</p>
+        </div>
+      </div>
+      <div class="contato__form-wrap reveal-right">
+        <form id="form-agendamento">
+          <div class="contato__row">
+            <div class="contato__field">
+              <label for="nome">Nome</label>
+              <input type="text" name="nome" id="nome" placeholder="Como posso te chamar?" required>
+            </div>
+            <div class="contato__field">
+              <label for="email">E-mail</label>
+              <input type="email" name="email" id="email" placeholder="seu@email.com" required>
+            </div>
+          </div>
+          <div class="contato__field">
+            <label for="mensagem">Mensagem</label>
+            <textarea name="mensagem" id="mensagem" rows="5" placeholder="Escreva aqui com carinho..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--accent">
+            Enviar com amor
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+        <div class="contato__feedback" id="formFeedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__logo">EU & VOCÊ</p>
+        <p class="footer__sub">Uma história de amor, em código.</p>
+      </div>
+      <nav class="footer__nav">
+        <a href="#sobre">História</a>
+        <a href="#timeline">Momentos</a>
+        <a href="#reserve">Planos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p>Feito com ❤ desde 10 de Março de 2026</p>
+      <p class="footer__copy">© 2026 Eu & Você</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      emailjs.init("b383d1aEfIalFkV0K");
+    })();
+
+    const form = document.getElementById("form-agendamento");
+    const feedback = document.getElementById("formFeedback");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      feedback.textContent = "Enviando... ❤️";
+      feedback.classList.add("visible");
+
+      emailjs.sendForm("service_xcooozd", "template_fr4fwsc", this)
+        .then(() => {
+          feedback.textContent = "Mensagem enviada com sucesso ✨";
+          form.reset();
+        })
+        .catch(() => {
+          feedback.textContent = "Erro ao enviar 😢";
+        });
+    });
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>
