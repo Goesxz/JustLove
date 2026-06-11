@@ -1,387 +1,1312 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eu & Você — Nossa história</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A & L — Nossa História</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  </head>
+  <body>
+    <!-- ÁUDIO -->
+    <audio id="bgMusic" loop preload="auto">
+      <source src="assets/audio/cheiro de mar.mpeg" type="audio/mpeg" />
+    </audio>
 
-  <!-- ÁUDIO DE FUNDO -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="assets/audio/cheiro de mar.mpeg" type="audio/mpeg">
-  </audio>
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+      <a href="#inicio" class="nav__logo">A<span>&</span>L</a>
+      <ul class="nav__links">
+        <li><a href="#sobre" class="nav__link">História</a></li>
+        <li><a href="#timeline" class="nav__link">Momentos</a></li>
+        <li><a href="#carta" class="nav__link">Carta</a></li>
+        <li><a href="#playlist" class="nav__link">Playlist</a></li>
+        <li><a href="#mapa" class="nav__link">Lugares</a></li>
+        <li><a href="#reserve" class="nav__link">Planos</a></li>
+        <li><a href="#contato" class="nav__link">Contato</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav">
-    <div class="nav__logo">
-      <span class="nav__logo-text">A&L</span>
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mobile-menu__close" id="mobileClose" aria-label="Fechar">
+        ✕
+      </button>
+      <ul>
+        <li><a href="#sobre" class="mobile-link">História</a></li>
+        <li><a href="#timeline" class="mobile-link">Momentos</a></li>
+        <li><a href="#carta" class="mobile-link">Carta</a></li>
+        <li><a href="#playlist" class="mobile-link">Playlist</a></li>
+        <li><a href="#mapa" class="mobile-link">Lugares</a></li>
+        <li><a href="#reserve" class="mobile-link">Planos</a></li>
+        <li><a href="#contato" class="mobile-link">Contato</a></li>
+      </ul>
     </div>
-    <ul class="nav__links">
-      <li><a href="#sobre" class="nav__link">História</a></li>
-      <li><a href="#timeline" class="nav__link">Momentos</a></li>
-      <li><a href="#reserve" class="nav__link">Planos</a></li>
-      <li><a href="#contato" class="nav__link">Contato</a></li>
-    </ul>
-    <button class="nav__hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
+
+    <!-- BOTÃO MÚSICA -->
+    <button class="music-toggle" id="musicToggle" aria-label="Música">
+      <span class="music-label" id="musicLabel">♪</span>
     </button>
-  </nav>
 
-  <!-- BOTÃO DE CONTROLE DA MÚSICA (fixo na tela) -->
-  <button class="music-toggle" id="musicToggle" aria-label="Controle de música" title="Clique para tocar a música">
-    <!-- Ícone PLAY (música pausada) -->
-    <svg class="music-icon music-icon--play" width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <path d="M9 18V6l12-2v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
-      <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
-    </svg>
-    <!-- Ícone MUTE (música tocando) -->
-    <svg class="music-icon music-icon--mute" width="18" height="18" viewBox="0 0 24 24" fill="none" style="display:none">
-      <path d="M9 18V6l12-2v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
-      <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
-      <line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-    <span class="music-label">♪</span>
-  </button>
-
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <ul>
-      <li><a href="#sobre" class="mobile-link">História</a></li>
-      <li><a href="#timeline" class="mobile-link">Momentos</a></li>
-      <li><a href="#reserve" class="mobile-link">Planos</a></li>
-      <li><a href="#contato" class="mobile-link">Contato</a></li>
-    </ul>
-  </div>
-
-  <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="hero__bg">
-      <div class="hero__bg-img" style="background-image: url('assets/fotos/hero.jpg')"></div>
-      <div class="hero__overlay"></div>
-    </div>
-
-    <div class="hero__content">
-      <p class="hero__eyebrow reveal-up" style="--delay: 0.1s">
-        <span class="hero__eyebrow-line"></span>
-        Desde 10 de Março de 2025
-        <span class="hero__eyebrow-line"></span>
-      </p>
-      <h1 class="hero__title reveal-up" style="--delay: 0.3s">
-        Tudo começou<br>com <em>você</em>
-      </h1>
-      <p class="hero__sub reveal-up" style="--delay: 0.5s">
-        Um lugar só nosso — onde cada memória vive para sempre.
-      </p>
-      <a href="#sobre" class="btn btn--accent reveal-up" style="--delay: 0.7s">
-        Nossa história
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-
-    <!-- TICKER -->
-    <div class="hero__ticker-wrap">
-      <div class="hero__ticker">
-        <span>Amor &nbsp;&nbsp;·&nbsp;&nbsp; Cumplicidade &nbsp;&nbsp;·&nbsp;&nbsp; Eu & Você &nbsp;&nbsp;·&nbsp;&nbsp; Para sempre &nbsp;&nbsp;·&nbsp;&nbsp; Cada instante &nbsp;&nbsp;·&nbsp;&nbsp; Nossa história &nbsp;&nbsp;·&nbsp;&nbsp;</span>
-        <span aria-hidden="true">Amor &nbsp;&nbsp;·&nbsp;&nbsp; Cumplicidade &nbsp;&nbsp;·&nbsp;&nbsp; Eu & Você &nbsp;&nbsp;·&nbsp;&nbsp; Para sempre &nbsp;&nbsp;·&nbsp;&nbsp; Cada instante &nbsp;&nbsp;·&nbsp;&nbsp; Nossa história &nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <!-- ═══════════════════════════════════
+       HERO
+  ═══════════════════════════════════ -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg">
+        <div
+          class="hero__bg-img"
+          style="background-image: url(&quot;assets/fotos/hero.jpg&quot;)"
+        ></div>
+        <div class="hero__overlay"></div>
       </div>
-    </div>
 
-  </section>
+      <!-- Linha diagonal decorativa -->
+      <div class="hero__slash" aria-hidden="true"></div>
 
-  <!-- SOBRE -->
-  <section class="sobre" id="sobre">
-    <div class="sobre__decorator" aria-hidden="true">01</div>
-    <div class="sobre__img-wrap reveal-left">
-      <div class="sobre__img" style="background-image: url('assets/love.jpeg')"></div>
-      <div class="sobre__img-accent"></div>
-    </div>
-    <div class="sobre__texto reveal-right">
-      <p class="section-eyebrow">Quem somos</p>
-      <h2 class="sobre__titulo">Duas almas que se<br><em>reconheceram</em></h2>
-      <p class="sobre__desc">
-        Não foi acidente. Foi o universo fazendo o que sabe fazer de melhor — colocar duas pessoas certas no lugar certo, na hora exata. Cada conversa que tivemos foi um tijolo nessa construção que chamamos de nós.
-      </p>
-      <p class="sobre__desc">
-        Aqui guardamos o que somos: os risos fáceis, os silêncios confortáveis, e tudo o que ainda vamos viver.
-      </p>
-      <div class="sobre__stats">
-        <div class="sobre__stat">
-          <span class="sobre__stat-num">2</span>
-          <span class="sobre__stat-label">Corações</span>
+      <div class="hero__content">
+        <div class="hero__tag reveal-up" style="--delay: 0.1s">
+          <span class="hero__tag-bar"></span>
+          Desde 10 de Março de 2025
         </div>
-        <div class="sobre__stat">
-          <span class="sobre__stat-num">∞</span>
-          <span class="sobre__stat-label">memórias</span>
-        </div>
-        <div class="sobre__stat">
-          <span class="sobre__stat-num">1</span>
-          <span class="sobre__stat-label">amor</span>
+
+        <h1 class="hero__title reveal-up" style="--delay: 0.25s">
+          Tudo começou<br />com <em>você</em>
+        </h1>
+
+        <p class="hero__sub reveal-up" style="--delay: 0.4s">
+          Um lugar só nosso — onde cada memória vive para sempre.
+        </p>
+
+        <div class="hero__actions reveal-up" style="--delay: 0.55s">
+          <a href="#sobre" class="btn btn--red">
+            Nossa história
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://canva.link/eahx9ltavny0gip"
+            target="_blank"
+            rel="noopener"
+            class="btn btn--ghost"
+          >
+            Ver apresentação
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M4 8h8M9 5l3 3-3 3"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- TIMELINE -->
-  <section class="timeline-section" id="timeline">
-    <div class="timeline-section__header">
-      <span class="section-eyebrow">Linha do tempo</span>
-      <h2 class="timeline-section__title">Os capítulos<br>da nossa <em>história</em></h2>
-    </div>
+      <!-- Contador ao vivo -->
+      <div class="hero__counter reveal-up" style="--delay: 0.7s">
+        <p class="hero__counter-label">Tempo juntos</p>
+        <p class="hero__counter-time" id="contador">—</p>
+      </div>
 
-    <div class="timeline">
-      <div class="timeline__line"></div>
+      <!-- Ticker -->
+    </section>
 
-      <div class="timeline__item timeline__item--left reveal-left">
-        <div class="timeline__card">
-          <div class="timeline__img" style="background-image: url('assets/Pedido de namoro.jpeg')"></div>
-          <div class="timeline__content">
-            <span class="timeline__date">10 Mar, 2025</span>
-            <h3 class="timeline__title">O pedido de Namoro</h3>
-            <p class="timeline__desc">O dia em que tudo mudou. Quando te vi, algo dentro de mim reconheceu: era você.</p>
-            <button class="timeline__heart js-heart" aria-label="Curtir">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span class="timeline__heart-count">24</span>
-            </button>
+    <!-- ═══════════════════════════════════
+       SOBRE
+  ═══════════════════════════════════ -->
+    <section class="sobre" id="sobre">
+      <div class="sobre__img-col reveal-left">
+        <div class="sobre__img-frame">
+          <div
+            class="sobre__img"
+            style="background-image: url(&quot;assets/love.jpeg&quot;)"
+          ></div>
+          <div class="sobre__img-tag">10.03.2025</div>
+        </div>
+      </div>
+
+      <div class="sobre__text-col reveal-right">
+        <span class="eyebrow">Quem somos</span>
+        <h2 class="sobre__title">
+          Duas almas que se<br /><em>reconheceram</em>
+        </h2>
+        <p class="sobre__p">
+          Não foi acidente. Foi o universo fazendo o que sabe fazer de melhor —
+          colocar duas pessoas certas no lugar certo, na hora exata.
+        </p>
+        <p class="sobre__p">
+          Aqui guardamos o que somos: os risos fáceis, os silêncios
+          confortáveis, e tudo o que ainda vamos viver.
+        </p>
+
+        <!-- Link Canva destacado -->
+        <a
+          href="https://canva.link/eahx9ltavny0gip"
+          target="_blank"
+          rel="noopener"
+          class="sobre__canva-link"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <polyline
+              points="15 3 21 3 21 9"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <line
+              x1="10"
+              y1="14"
+              x2="21"
+              y2="3"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          Ver nossa apresentação especial
+        </a>
+
+        <div class="sobre__stats">
+          <div class="sobre__stat">
+            <span class="sobre__stat-n">2</span>
+            <span class="sobre__stat-l">Corações</span>
           </div>
-        </div>
-        <div class="timeline__dot"></div>
-      </div>
-
-      <div class="timeline__item timeline__item--right reveal-right">
-        <div class="timeline__dot"></div>
-        <div class="timeline__card">
-          <div class="timeline__img" style="background-image: url('assets/Birthday.jpeg')"></div>
-          <div class="timeline__content">
-            <span class="timeline__date">Março, 2025</span>
-            <h3 class="timeline__title">Aquele dia especial</h3>
-            <p class="timeline__desc">Algumas horas parecem durar a vida inteira. Esse dia foi um desses — eterno do começo ao fim.</p>
-            <button class="timeline__heart js-heart" aria-label="Curtir">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span class="timeline__heart-count">18</span>
-            </button>
+          <div class="sobre__stat-div" aria-hidden="true"></div>
+          <div class="sobre__stat">
+            <span class="sobre__stat-n">∞</span>
+            <span class="sobre__stat-l">Memórias</span>
           </div>
-        </div>
-      </div>
-
-      <div class="timeline__item timeline__item--left reveal-left">
-        <div class="timeline__card">
-          <div class="timeline__img" style="background-image: url('assets/WhatsApp\ Image\ 2026-04-02\ at\ 15.35.31.jpeg')"></div>
-          <div class="timeline__content">
-            <span class="timeline__date">Todos os dias</span>
-            <h3 class="timeline__title">Cada momento contigo</h3>
-            <p class="timeline__desc">Aprendi que o extraordinário mora nos detalhes — na forma como você ri, no jeito que segurava minha mão.</p>
-            <button class="timeline__heart js-heart" aria-label="Curtir">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span class="timeline__heart-count">31</span>
-            </button>
-          </div>
-        </div>
-        <div class="timeline__dot"></div>
-      </div>
-
-      <div class="timeline__item timeline__item--right reveal-right">
-        <div class="timeline__dot timeline__dot--future"></div>
-        <div class="timeline__card timeline__card--future">
-          <div class="timeline__content">
-            <span class="timeline__date">Em breve...</span>
-            <h3 class="timeline__title">O próximo capítulo</h3>
-            <p class="timeline__desc">Ainda está sendo escrito. E mal posso esperar para viver cada linha com você.</p>
+          <div class="sobre__stat-div" aria-hidden="true"></div>
+          <div class="sobre__stat">
+            <span class="sobre__stat-n">1</span>
+            <span class="sobre__stat-l">Amor</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- RESERVE -->
-  <section class="reserve" id="reserve">
-    <div class="reserve__bg-text" aria-hidden="true">NÓS</div>
-    <div class="reserve__inner">
-      <div class="reserve__left reveal-up">
-        <span class="section-eyebrow">Próximos planos</span>
-        <h2 class="reserve__titulo">O que vamos<br>viver <em>juntos</em></h2>
-        <p class="reserve__desc">
+    <!-- ═══════════════════════════════════
+       TIMELINE
+  ═══════════════════════════════════ -->
+    <section class="tl-section" id="timeline">
+      <div class="tl-section__head">
+        <span class="eyebrow eyebrow--light">Linha do tempo</span>
+        <h2 class="tl-section__title">
+          Os capítulos<br />da nossa <em>história</em>
+        </h2>
+      </div>
+
+      <div class="tl">
+        <!-- Item 1 -->
+        <div class="tl__item reveal-up">
+          <div class="tl__num">01</div>
+          <div class="tl__card">
+            <div
+              class="tl__img"
+              style="
+                background-image: url(&quot;assets/Pedido de namoro.jpeg&quot;);
+              "
+            ></div>
+            <div class="tl__body">
+              <span class="tl__date">10 Mar, 2025</span>
+              <h3 class="tl__title">O pedido de Namoro</h3>
+              <p class="tl__desc">
+                O dia em que tudo mudou. Quando te vi, algo dentro de mim
+                reconheceu: era você.
+              </p>
+              <button class="tl__heart js-heart" aria-label="Curtir">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span class="tl__heart-count">24</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="tl__item reveal-up" style="--delay: 0.1s">
+          <div class="tl__num">02</div>
+          <div class="tl__card">
+            <div
+              class="tl__img"
+              style="background-image: url(&quot;assets/Birthday.jpeg&quot;)"
+            ></div>
+            <div class="tl__body">
+              <span class="tl__date">Março, 2025</span>
+              <h3 class="tl__title">Aquele dia especial</h3>
+              <p class="tl__desc">
+                Algumas horas parecem durar a vida inteira. Esse dia foi um
+                desses — eterno do começo ao fim.
+              </p>
+              <button class="tl__heart js-heart" aria-label="Curtir">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span class="tl__heart-count">18</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="tl__item reveal-up" style="--delay: 0.2s">
+          <div class="tl__num">03</div>
+          <div class="tl__card">
+            <div
+              class="tl__img"
+              style="
+                background-image: url(&quot;assets/WhatsApp Image 2026-04-02 at 15.35.31.jpeg&quot;);
+              "
+            ></div>
+            <div class="tl__body">
+              <span class="tl__date">Todos os dias</span>
+              <h3 class="tl__title">Cada momento contigo</h3>
+              <p class="tl__desc">
+                Aprendi que o extraordinário mora nos detalhes — na forma como
+                você ri, no jeito que segurava minha mão.
+              </p>
+              <button class="tl__heart js-heart" aria-label="Curtir">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span class="tl__heart-count">31</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item futuro -->
+        <div class="tl__item tl__item--future reveal-up" style="--delay: 0.3s">
+          <div class="tl__num tl__num--future">??</div>
+          <div class="tl__card tl__card--future">
+            <div class="tl__body">
+              <span class="tl__date">Em breve...</span>
+              <h3 class="tl__title">O próximo capítulo</h3>
+              <p class="tl__desc">
+                Ainda está sendo escrito. E mal posso esperar para viver cada
+                linha com você.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       RESERVE / PLANOS
+  ═══════════════════════════════════ -->
+    <section class="reserve" id="reserve">
+      <div class="reserve__heading reveal-up">
+        <span class="eyebrow">Próximos planos</span>
+        <h2 class="reserve__title">O que vamos<br />viver <em>juntos</em></h2>
+        <p class="reserve__lead">
           Cada encontro é uma página nova. Escolha o que quiser escrever comigo.
         </p>
 
-        <!-- VÍDEO — sem muted para tocar com som -->
-        <div class="reserve__flor" id="videoWrap">
-          <video id="loveVideo" loop playsinline preload="metadata">
-            <source src="assets/videos/WhatsApp Video 2026-04-02 at 13.21.23.mp4" type="video/mp4">
-            Seu navegador não suporta vídeo.
-          </video>
-          <!-- Overlay de play para o vídeo -->
-          <div class="video__play-overlay" id="videoPlayOverlay">
-            <button class="video__play-btn" id="videoPlayBtn" aria-label="Reproduzir vídeo">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.2"/>
-                <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
+        <!-- Canva link de destaque -->
+        <a
+          href="https://canva.link/eahx9ltavny0gip"
+          target="_blank"
+          rel="noopener"
+          class="canva-pill"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Nossa apresentação no Canva
+        </a>
+      </div>
+
+      <div class="reserve__body">
+        <!-- Vídeo -->
+        <div class="reserve__video-col reveal-left">
+          <div class="reserve__video-wrap" id="videoWrap">
+            <video id="loveVideo" loop playsinline preload="metadata">
+              <source
+                src="assets/videos/WhatsApp Video 2026-04-02 at 13.21.23.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <div class="video__overlay" id="videoPlayOverlay">
+              <button
+                class="video__play-btn"
+                id="videoPlayBtn"
+                aria-label="Reproduzir"
+              >
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                  <path d="M10 8l6 4-6 4V8z" fill="currentColor" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Widget -->
+        <div class="reserve__widget reveal-right">
+          <div class="reserve__widget-top">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <rect
+                x="2"
+                y="2"
+                width="12"
+                height="12"
+                rx="2"
+                stroke="currentColor"
+                stroke-width="1.2"
+              />
+              <path
+                d="M5 1v2M11 1v2M2 6h12"
+                stroke="currentColor"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+            </svg>
+            Escolha um momento
+          </div>
+
+          <div class="reserve__opts">
+            <label class="reserve__opt">
+              <input
+                type="radio"
+                name="plano"
+                value="1"
+                class="reserve__radio"
+              />
+              <div class="reserve__opt-inner">
+                <div class="reserve__opt-icon">✦</div>
+                <div>
+                  <p class="reserve__opt-name">Passeio surpresa</p>
+                  <p class="reserve__opt-sub">1 hora · destino secreto</p>
+                </div>
+              </div>
+            </label>
+            <label class="reserve__opt">
+              <input
+                type="radio"
+                name="plano"
+                value="2"
+                class="reserve__radio"
+              />
+              <div class="reserve__opt-inner">
+                <div class="reserve__opt-icon">♡</div>
+                <div>
+                  <p class="reserve__opt-name">Jantar a dois</p>
+                  <p class="reserve__opt-sub">2 horas · luz de vela</p>
+                </div>
+              </div>
+            </label>
+            <label class="reserve__opt">
+              <input
+                type="radio"
+                name="plano"
+                value="3"
+                class="reserve__radio"
+              />
+              <div class="reserve__opt-inner">
+                <div class="reserve__opt-icon">◈</div>
+                <div>
+                  <p class="reserve__opt-name">Dia inteiro juntos</p>
+                  <p class="reserve__opt-sub">Do amanhecer ao pôr do sol</p>
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <div class="field">
+            <label for="reserveNome">Seu nome</label>
+            <input
+              type="text"
+              id="reserveNome"
+              placeholder="Como posso te chamar?"
+              autocomplete="off"
+            />
+          </div>
+          <div class="field">
+            <label for="reserveData">Data e hora</label>
+            <input type="datetime-local" id="reserveData" />
+          </div>
+          <div class="field">
+            <label for="reserveMensagem">Mensagem (opcional)</label>
+            <textarea
+              id="reserveMensagem"
+              rows="3"
+              placeholder="Escreva algo especial..."
+            ></textarea>
+          </div>
+
+          <button class="btn btn--red reserve__btn" id="reserveBtn">
+            Reservar esse momento
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <p class="reserve__foot">feito com amor, para você ✦</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       CARTA ABERTA
+  ═══════════════════════════════════ -->
+    <section class="carta" id="carta">
+      <div class="carta__inner">
+        <div class="carta__left reveal-left">
+          <span class="eyebrow">Para você</span>
+          <h2 class="carta__title">Uma carta<br /><em>aberta</em></h2>
+          <p class="carta__hint">Clique no envelope para abrir.</p>
+        </div>
+
+        <div class="carta__envelope-col reveal-right">
+          <!-- Envelope -->
+          <div
+            class="envelope"
+            id="envelope"
+            aria-label="Abrir carta"
+            role="button"
+            tabindex="0"
+          >
+            <div class="envelope__flap" id="envFlap"></div>
+            <div class="envelope__body">
+              <div class="envelope__seal" id="envSeal">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="envelope__lines" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       PLAYLIST
+  ═══════════════════════════════════ -->
+    <section class="playlist-sec" id="playlist">
+      <div class="playlist-sec__inner">
+        <div class="playlist-sec__head reveal-up">
+          <span class="eyebrow eyebrow--light">Nossas músicas</span>
+          <h2 class="playlist-sec__title">
+            A trilha sonora<br />da nossa <em>história</em>
+          </h2>
+          <p class="playlist-sec__sub">
+            Cada faixa é um pedaço do que sentimos.
+          </p>
+        </div>
+
+        <div class="playlist-sec__embed reveal-up" style="--delay: 0.15s">
+          <iframe
+            id="spotifyEmbed"
+            src="https://open.spotify.com/embed/playlist/44G2tInvXGrFg65Ntx7Ehb?utm_source=generator&theme=0"
+            width="100%"
+            height="480"
+            frameborder="0"
+            allow="
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              fullscreen;
+              picture-in-picture;
+            "
+            loading="lazy"
+            title="Nossa playlist"
+          ></iframe>
+          <div class="playlist-sec__open">
+            <a
+              href="https://open.spotify.com/playlist/44G2tInvXGrFg65Ntx7Ehb"
+              target="_blank"
+              rel="noopener"
+              class="btn btn--ghost"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+                />
+              </svg>
+              Abrir no Spotify
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       MAPA DE LUGARES
+  ═══════════════════════════════════ -->
+    <section class="mapa-sec" id="mapa">
+      <div class="mapa-sec__head reveal-up">
+        <span class="eyebrow">Explorar juntos</span>
+        <h2 class="mapa-sec__title">
+          Lugares para<br />a gente <em>descobrir</em>
+        </h2>
+        <p class="mapa-sec__sub">
+          Sugestões na Grande São Paulo — filtre o que quiser viver com ela.
+        </p>
+      </div>
+
+      <!-- Filtros -->
+      <div
+        class="mapa-filtros reveal-up"
+        style="--delay: 0.1s"
+        role="group"
+        aria-label="Filtrar lugares"
+      >
+        <button class="mapa-filtro mapa-filtro--active" data-cat="todos">
+          Todos
+        </button>
+        <button class="mapa-filtro" data-cat="romantico">Romântico</button>
+        <button class="mapa-filtro" data-cat="natureza">Natureza</button>
+        <button class="mapa-filtro" data-cat="cultura">Cultura</button>
+        <button class="mapa-filtro" data-cat="gastronomia">Gastronomia</button>
+        <button class="mapa-filtro" data-cat="aventura">Aventura</button>
+      </div>
+
+      <!-- Grid de cards de lugares -->
+      <div class="mapa-grid reveal-up" style="--delay: 0.2s" id="mapaGrid">
+        <div class="lugar-card" data-cat="romantico">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Romântico</span>
+            <h3 class="lugar-card__name">Parque Ibirapuera</h3>
+            <p class="lugar-card__desc">
+              O clássico da cidade. Passear de mãos dadas, assistir ao pôr do
+              sol no lago — sempre funciona.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">São Paulo · SP</span>
+              <a
+                href="https://maps.google.com/?q=Parque+Ibirapuera+São+Paulo"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lugar-card" data-cat="gastronomia">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Gastronomia</span>
+            <h3 class="lugar-card__name">Bairro da Liberdade</h3>
+            <p class="lugar-card__desc">
+              Culinária oriental autêntica, ruas decoradas e aquele ambiente que
+              parece outra cidade dentro de SP.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">São Paulo · SP</span>
+              <a
+                href="https://maps.google.com/?q=Liberdade+São+Paulo"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lugar-card" data-cat="natureza">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Natureza</span>
+            <h3 class="lugar-card__name">Parque Estadual da Cantareira</h3>
+            <p class="lugar-card__desc">
+              Uma das maiores florestas urbanas do mundo. Trilhas, ar puro e
+              aquela sensação de escapar da cidade.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">São Paulo · SP</span>
+              <a
+                href="https://maps.google.com/?q=Parque+Estadual+da+Cantareira"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lugar-card" data-cat="cultura">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Cultura</span>
+            <h3 class="lugar-card__name">Pinacoteca do Estado</h3>
+            <p class="lugar-card__desc">
+              Arte brasileira do século XIX ao contemporâneo. O jardim interno é
+              perfeito para uma tarde calma a dois.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">São Paulo · SP</span>
+              <a
+                href="https://maps.google.com/?q=Pinacoteca+do+Estado+São+Paulo"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lugar-card" data-cat="romantico">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Romântico</span>
+            <h3 class="lugar-card__name">Vila Madalena</h3>
+            <p class="lugar-card__desc">
+              Beco do Batman, cafés charmosos, barzinhos. Perfeito para um
+              passeio descompromissado e espontâneo.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">São Paulo · SP</span>
+              <a
+                href="https://maps.google.com/?q=Vila+Madalena+São+Paulo"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lugar-card" data-cat="aventura">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Aventura</span>
+            <h3 class="lugar-card__name">Parque Estadual Serra do Mar</h3>
+            <p class="lugar-card__desc">
+              A uma hora de SP, cachoeiras e mirantes com vista para o oceano.
+              Um dia inteiro de aventura e natureza.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">Cubatão · SP</span>
+              <a
+                href="https://maps.google.com/?q=Parque+Estadual+Serra+do+Mar+SP"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lugar-card" data-cat="gastronomia">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Gastronomia</span>
+            <h3 class="lugar-card__name">Mercadão de São Paulo</h3>
+            <p class="lugar-card__desc">
+              O Mercado Municipal é uma experiência sensorial completa. Pastel
+              de bacalhau e mortadela são obrigatórios.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">São Paulo · SP</span>
+              <a
+                href="https://maps.google.com/?q=Mercado+Municipal+São+Paulo"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lugar-card" data-cat="cultura">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Cultura</span>
+            <h3 class="lugar-card__name">MASP</h3>
+            <p class="lugar-card__desc">
+              Ícone da Avenida Paulista. O acervo é impressionante e o mirante
+              embaixo tem uma das melhores vistas da cidade.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">São Paulo · SP</span>
+              <a
+                href="https://maps.google.com/?q=MASP+São+Paulo"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lugar-card" data-cat="natureza">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Natureza</span>
+            <h3 class="lugar-card__name">Campos do Jordão</h3>
+            <p class="lugar-card__desc">
+              A 2h de SP, a cidade europeia da Serra da Mantiqueira. Chocolate
+              quente, frio gostoso e paisagens de tirar o fôlego.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">Campos do Jordão · SP</span>
+              <a
+                href="https://maps.google.com/?q=Campos+do+Jordão+SP"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lugar-card" data-cat="aventura">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Aventura</span>
+            <h3 class="lugar-card__name">Praia de Maresias</h3>
+            <p class="lugar-card__desc">
+              A praia mais querida de SP, a menos de 2h pela Mogi-Bertioga. Mar
+              aberto, ondas e areia fina — fuga perfeita de fim de semana.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">São Sebastião · SP</span>
+              <a
+                href="https://maps.google.com/?q=Praia+de+Maresias+São+Sebastião"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lugar-card" data-cat="romantico">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Romântico</span>
+            <h3 class="lugar-card__name">Terraço Itália</h3>
+            <p class="lugar-card__desc">
+              Vista panorâmica do 41º andar com SP inteira embaixo. Jantar ao
+              som de piano ao vivo — inesquecível.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">São Paulo · SP</span>
+              <a
+                href="https://maps.google.com/?q=Terraço+Itália+São+Paulo"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lugar-card" data-cat="cultura">
+          <div
+            class="lugar-card__img"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=600&q=80&quot;);
+            "
+          ></div>
+          <div class="lugar-card__body">
+            <span class="lugar-card__cat">Cultura</span>
+            <h3 class="lugar-card__name">Theatro Municipal</h3>
+            <p class="lugar-card__desc">
+              Uma das construções mais bonitas de SP. Ópera, balé, concertos —
+              uma noite completamente diferente do cotidiano.
+            </p>
+            <div class="lugar-card__footer">
+              <span class="lugar-card__dist">São Paulo · SP</span>
+              <a
+                href="https://maps.google.com/?q=Theatro+Municipal+São+Paulo"
+                target="_blank"
+                rel="noopener"
+                class="lugar-card__maps"
+              >
+                Ver no mapa
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mapa-empty" id="mapaEmpty" style="display: none">
+        Nenhum lugar nessa categoria ainda. Em breve!
+      </p>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       CONTATO
+  ═══════════════════════════════════ -->
+    <section class="contato" id="contato">
+      <div class="contato__inner">
+        <div class="contato__left reveal-left">
+          <span class="eyebrow">Fale comigo</span>
+          <h2 class="contato__title">
+            O que você<br />quer me <em>dizer?</em>
+          </h2>
+          <p class="contato__desc">
+            Toda palavra sua importa. Manda uma mensagem, um pedido, um "quero
+            mais você".
+          </p>
+          <div class="contato__info">
+            <p>luishenry286@gmail.com</p>
+            <p>(11) 98855-9276</p>
+          </div>
+
+          <a
+            href="https://canva.link/eahx9ltavny0gip"
+            target="_blank"
+            rel="noopener"
+            class="contato__canva"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <polyline
+                points="15 3 21 3 21 9"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <line
+                x1="10"
+                y1="14"
+                x2="21"
+                y2="3"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            Ver apresentação Canva
+          </a>
+        </div>
+
+        <div class="contato__form-wrap reveal-right">
+          <form id="form-agendamento" novalidate>
+            <div class="contato__row">
+              <div class="field">
+                <label for="nome">Nome</label>
+                <input
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  placeholder="Como posso te chamar?"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="seu@email.com"
+                  required
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label for="mensagem">Mensagem</label>
+              <textarea
+                name="mensagem"
+                id="mensagem"
+                rows="5"
+                placeholder="Escreva aqui com carinho..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn--red">
+              Enviar com amor
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M3 8h10M9 4l4 4-4 4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </button>
-          </div>
+          </form>
+          <div class="contato__feedback" id="formFeedback"></div>
         </div>
-
       </div>
-      <div class="reserve__widget reveal-up" style="--delay: 0.15s">
-        <div class="reserve__widget-header">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M5 1v2M11 1v2M2 6h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          Escolha um momento
-        </div>
+    </section>
 
-        <div class="reserve__opcoes">
-          <label class="reserve__opcao">
-            <input type="radio" name="plano" value="1" class="reserve__radio">
-            <div class="reserve__opcao-inner">
-              <div class="reserve__opcao-icon">✦</div>
-              <div>
-                <p class="reserve__opcao-nome">Passeio surpresa</p>
-                <p class="reserve__opcao-desc">1 hora · destino secreto</p>
-              </div>
-            </div>
-          </label>
-          <label class="reserve__opcao">
-            <input type="radio" name="plano" value="2" class="reserve__radio">
-            <div class="reserve__opcao-inner">
-              <div class="reserve__opcao-icon">♡</div>
-              <div>
-                <p class="reserve__opcao-nome">Jantar a dois</p>
-                <p class="reserve__opcao-desc">2 horas · luz de vela</p>
-              </div>
-            </div>
-          </label>
-          <label class="reserve__opcao">
-            <input type="radio" name="plano" value="3" class="reserve__radio">
-            <div class="reserve__opcao-inner">
-              <div class="reserve__opcao-icon">◈</div>
-              <div>
-                <p class="reserve__opcao-nome">Dia inteiro juntos</p>
-                <p class="reserve__opcao-desc">Do amanhecer ao pôr do sol</p>
-              </div>
-            </div>
-          </label>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__top">
+        <div>
+          <p class="footer__logo">EU &amp; VOCÊ</p>
+          <p class="footer__sub">Uma história de amor, em código.</p>
         </div>
+        <nav class="footer__nav" aria-label="Rodapé">
+          <a href="#sobre">História</a>
+          <a href="#timeline">Momentos</a>
+          <a href="#carta">Carta</a>
+          <a href="#playlist">Playlist</a>
+          <a href="#mapa">Lugares</a>
+          <a href="#reserve">Planos</a>
+          <a href="#contato">Contato</a>
+          <a
+            href="https://canva.link/eahx9ltavny0gip"
+            target="_blank"
+            rel="noopener"
+            >Apresentação</a
+          >
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p>Feito com ❤ desde 10 de Março de 2025</p>
+        <p>© 2026 Eu &amp; Você</p>
+      </div>
+    </footer>
 
-        <div class="contato__field" style="margin-top: 1.2rem;">
-          <label for="reserveNome">Seu nome</label>
-          <input type="text" id="reserveNome" placeholder="Como posso te chamar?" autocomplete="off">
-        </div>
+    <!-- Toast -->
+    <div class="toast" id="toast" role="alert" aria-live="polite"></div>
 
-        <div class="contato__field" style="margin-top: 0.8rem;">
-          <label for="reserveData">Data e hora do encontro</label>
-          <input type="datetime-local" id="reserveData">
-        </div>
+    <div
+      class="carta-modal"
+      id="cartaModal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Carta de amor"
+      aria-hidden="true"
+    >
+      <div class="carta-modal__backdrop" id="cartaBackdrop"></div>
 
-        <div class="contato__field" style="margin-top: 0.8rem;">
-          <label for="reserveMensagem">Uma mensagem (opcional)</label>
-          <textarea id="reserveMensagem" rows="3" placeholder="Escreva algo especial..."></textarea>
-        </div>
-
-        <button class="btn btn--accent reserve__btn" id="reserveBtn" style="margin-top: 1.2rem;">
-          Reservar esse momento
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="carta-modal__paper">
+        <button
+          class="carta-modal__close"
+          id="cartaClose"
+          aria-label="Fechar carta"
+        >
+          ✕
         </button>
-        <p class="reserve__powered">feito com amor, para você ✦</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- CONTATO -->
-  <section class="contato" id="contato">
-    <div class="contato__decorator" aria-hidden="true">04</div>
-    <div class="contato__inner">
-      <div class="contato__left reveal-left">
-        <span class="section-eyebrow">Fale comigo</span>
-        <h2 class="contato__titulo">O que você<br>quer me <em>dizer?</em></h2>
-        <p class="contato__desc">
-          Toda palavra sua importa. Manda uma mensagem, um pedido, um quero mais você.
-        </p>
-        <div class="contato__info">
-          <p>luishenry286@gmail.com</p>
-          <p>(11) 98855-9276</p>
+        <div class="carta-modal__seal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z"
+              fill="currentColor"
+            />
+          </svg>
         </div>
-      </div>
-      <div class="contato__form-wrap reveal-right">
-        <form id="form-agendamento">
-          <div class="contato__row">
-            <div class="contato__field">
-              <label for="nome">Nome</label>
-              <input type="text" name="nome" id="nome" placeholder="Como posso te chamar?" required>
-            </div>
-            <div class="contato__field">
-              <label for="email">E-mail</label>
-              <input type="email" name="email" id="email" placeholder="seu@email.com" required>
-            </div>
-          </div>
-          <div class="contato__field">
-            <label for="mensagem">Mensagem</label>
-            <textarea name="mensagem" id="mensagem" rows="5" placeholder="Escreva aqui com carinho..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn--accent">
-            Enviar com amor
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </form>
-        <div class="contato__feedback" id="formFeedback"></div>
+
+        <div class="carta-modal__lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <p class="carta-modal__saudacao">Para você,</p>
+
+        <p class="carta-modal__texto">
+          Desde que você entrou na minha vida, cada dia ficou mais bonito. Não é
+          sobre os grandes momentos — é sobre você rindo do nada, sobre a forma
+          como me olha e mostra que nossos momentos valem a pena.
+        </p>
+
+        <p class="carta-modal__texto">
+          Você me ensinou que amar é sobre permanecer, mesmo que eu seja a
+          pessoa que te desafie, que te faça questionar, que te tire da zona de
+          conforto, eu faço isso por amor.
+        </p>
+
+        <p class="carta-modal__texto">
+          Cada instante ao seu lado é um presente que eu não merecia, mas que
+          guardo com todo o cuidado do mundo.
+        </p>
+
+        <p class="carta-modal__ass">
+          Com todo o meu amor,<br />
+          <em>Sr Goes</em>
+        </p>
+
+        <div class="carta-modal__data">10.03.2026</div>
       </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <p class="footer__logo">EU & VOCÊ</p>
-        <p class="footer__sub">Uma história de amor, em código.</p>
-      </div>
-      <nav class="footer__nav">
-        <a href="#sobre">História</a>
-        <a href="#timeline">Momentos</a>
-        <a href="#reserve">Planos</a>
-        <a href="#contato">Contato</a>
-      </nav>
-    </div>
-    <div class="footer__bottom">
-      <p>Feito com ❤ desde 10 de Março de 2026</p>
-      <p class="footer__copy">© 2026 Eu & Você</p>
-    </div>
-  </footer>
+    <script>
+      (function () {
+        emailjs.init("b383d1aEfIalFkV0K");
+      })();
 
-  <script>
-    (function(){
-      emailjs.init("b383d1aEfIalFkV0K");
-    })();
+      const form = document.getElementById("form-agendamento");
+      const feedback = document.getElementById("formFeedback");
 
-    const form = document.getElementById("form-agendamento");
-    const feedback = document.getElementById("formFeedback");
-
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      feedback.textContent = "Enviando... ❤️";
-      feedback.classList.add("visible");
-
-      emailjs.sendForm("service_xcooozd", "template_fr4fwsc", this)
-        .then(() => {
-          feedback.textContent = "Mensagem enviada com sucesso ✨";
-          form.reset();
-        })
-        .catch(() => {
-          feedback.textContent = "Erro ao enviar 😢";
-        });
-    });
-  </script>
-  <script src="js/script.js"></script>
-</body>
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        feedback.textContent = "Enviando...";
+        feedback.classList.add("visible");
+        emailjs
+          .sendForm("service_xcooozd", "template_fr4fwsc", this)
+          .then(() => {
+            feedback.textContent = "Mensagem enviada com sucesso ✨";
+            form.reset();
+          })
+          .catch(() => {
+            feedback.textContent = "Erro ao enviar. Tente novamente.";
+          });
+      });
+    </script>
+    <script src="js/script.js"></script>
+  </body>
 </html>
